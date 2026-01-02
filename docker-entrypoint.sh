@@ -6,9 +6,8 @@ if [ "$1" = 'n8n' ]; then
   echo "Fixing permissions for /home/node/.n8n..."
   chown -R node:node /home/node/.n8n
   
-  # Ejecutar n8n como usuario node usando su
-  # (n8n image based on alpine uses su-exec, debian uses gosu or su)
-  exec su-exec node "$@"
+  # Ejecutar n8n como usuario node usando gosu
+  exec gosu node "$@"
 fi
 
 exec "$@"
