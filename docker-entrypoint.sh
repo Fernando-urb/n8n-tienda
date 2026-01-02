@@ -6,8 +6,8 @@ if [ "$1" = 'n8n' ]; then
   echo "Fixing permissions for /home/node/.n8n..."
   chown -R node:node /home/node/.n8n
   
-  # Ejecutar n8n como usuario node usando gosu
-  exec gosu node "$@"
+  # Ejecutar n8n como usuario node usando su-exec (Alpine)
+  exec su-exec node "$@"
 fi
 
 exec "$@"
